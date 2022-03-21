@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:doc_express/home/search2.dart';
 
@@ -41,10 +42,10 @@ class Search1 extends StatefulWidget {
   const Search1({Key? key}) : super(key: key);
 
   @override
-  State<Search> createState() => _Search1State();
+  State<Search1> createState() => _Search1State();
 }
 final TextEditingController phoneController = new TextEditingController();
-class _Search1State extends State<Search> {
+class _Search1State extends State<Search1> {
   @override
   Widget build(BuildContext context) {
 
