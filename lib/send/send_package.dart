@@ -1,4 +1,6 @@
+import 'package:doc_express/home/calculus2.dart';
 import 'package:doc_express/home/home_screen.dart';
+import 'package:doc_express/send/box_package.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:doc_express/screens/main_screen.dart';
@@ -478,7 +480,10 @@ Row(
                 SizedBox(height: 41),
 
                 GestureDetector(
-                  onTap: (){},
+                  onTap: (){
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => Box()));
+                  },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(

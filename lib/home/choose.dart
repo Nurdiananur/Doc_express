@@ -1,3 +1,4 @@
+import 'package:doc_express/home/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -100,7 +101,7 @@ class _ChooseScreen1State extends State<ChooseScreen1> {
 
     ), leading: IconButton(onPressed: (){
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => MainScreen())
+            MaterialPageRoute(builder: (context) => Home())
         );
       }, icon: Icon(FontAwesomeIcons.arrowLeft , color: Color(0xff444444),),
       ),

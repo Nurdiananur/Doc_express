@@ -53,25 +53,7 @@ class _Calculus1State extends State<Calculus1> {
 
   @override
   Widget build(BuildContext context) {
-    final phoneField = TextFormField(
-      autofocus: false,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: 'Выберите из предложенного',
-          suffixIcon: IconButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Calculus2()));
-            },
-            icon: Icon(FontAwesomeIcons.angleRight),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          filled: true,
-          fillColor: Color(0xffEDEDEF)),
-    );
+
 
 
     Widget razmerField(String hintText){

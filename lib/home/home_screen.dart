@@ -1,4 +1,4 @@
-import 'package:doc_express/home/send_package.dart';
+import 'package:doc_express/send/send_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -71,9 +71,10 @@ class _Home1State extends State<Home1> {
         hintText: 'Куда',
         suffixIcon: IconButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Calculus2()));
-          },
+          //   Navigator.push(
+          //       context, MaterialPageRoute(builder: (context) => Calculus2()));
+          //
+        },
           icon: Icon(Icons.search, color: Colors.black),
         ),
       ),
