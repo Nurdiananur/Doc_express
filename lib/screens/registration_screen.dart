@@ -60,126 +60,93 @@ class _RagistrationScreen1State extends State<RagistrationScreen1> {
   bool passwordObscured = true;
 
   late int selectedRadio;
+
   @override
   void initState() {
     super.initState();
     selectedRadio = 0;
   }
 
-  setSelectedRadio(int val){
+  setSelectedRadio(int val) {
     setState(() {
       selectedRadio = val;
     });
   }
+
+  bool check1 = false;
+  bool check2 = false;
+
   @override
   Widget build(BuildContext context) {
     final phoneNumberField = TextFormField(
-      autofocus: false,
-      controller: phoneNumberEditingController,
-      keyboardType: TextInputType.emailAddress,
-      onSaved: (value)
-      {
-        phoneNumberEditingController.text = value!;
-      },
-      textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        autofocus: false,
+        controller: phoneNumberEditingController,
+        keyboardType: TextInputType.phone,
+        onSaved: (value) {
+          phoneNumberEditingController.text = value!;
+        },
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
           hintText: 'Номер телефона',
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          filled: true,
-          fillColor: Color(0xffEDEDEF)
-      ),
-    );
+          border: InputBorder.none,
+        ));
     final fioField = TextFormField(
-      autofocus: false,
-      controller: fioEditingController,
-      keyboardType: TextInputType.emailAddress,
-      onSaved: (value)
-      {
-        fioEditingController.text = value!;
-      },
-      textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        autofocus: false,
+        controller: fioEditingController,
+        keyboardType: TextInputType.emailAddress,
+        onSaved: (value) {
+          fioEditingController.text = value!;
+        },
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
+          border: InputBorder.none,
           hintText: 'ФИО',
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          filled: true,
-          fillColor: Color(0xffEDEDEF)
-      ),
-    );
-
-
+        ));
 
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordController,
       obscureText: true,
-      onSaved: (value)
-      {
+      onSaved: (value) {
         passwordController.text = value!;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: 'Пароль',
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          filled: true,
-          fillColor: Color(0xffEDEDEF),
+
+        border: InputBorder.none,
+        hintText: 'Пароль',
         suffixIcon: IconButton(
             onPressed: () {
-              setState((){
+              setState(() {
                 passwordObscured = !passwordObscured;
-
-
               });
             },
             icon: Icon(
-              passwordObscured ? Icons.visibility_off
-                  : Icons.vignette,
+              passwordObscured ? Icons.visibility_off : Icons.vignette,
             )),
       ),
     );
-
-
 
     final passwordEditingField = TextFormField(
       autofocus: false,
       controller: passwordEditingController,
       obscureText: true,
-      onSaved: (value)
-      {
+      onSaved: (value) {
         passwordEditingController.text = value!;
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: 'Повторите пароль',
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          filled: true,
-          fillColor: Color(0xffEDEDEF),
+        // contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        hintText: 'Повторите пароль',
+        border: InputBorder.none,
         suffixIcon: IconButton(
             onPressed: () {
-              setState((){
+              setState(() {
                 passwordObscured = !passwordObscured;
-
-
               });
             },
             icon: Icon(
-              passwordObscured ? Icons.visibility_off
-                  : Icons.vignette,
+              passwordObscured ? Icons.visibility_off : Icons.vignette,
             )),
       ),
     );
@@ -192,56 +159,81 @@ class _RagistrationScreen1State extends State<RagistrationScreen1> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-    Navigator.push(context,
-    MaterialPageRoute(builder: (context) => LastScreen()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => LastScreen()));
         },
-        child: Text('Зарегистироваться',
+        child: Text(
+          'Зарегистироваться',
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold
-          ),
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
     );
 
-
-
-      return Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        reverse: true,
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Center(
-            child: Container(
-              color: Colors.white,
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: 100),
-
-                    SizedBox(height: 100,
-                      child: Container(
-                        width: 144,
-                        height: 58,
-                        child: Image.asset('assets/doc.jpg',
-                          fit: BoxFit.contain,),
-                      ),),
-                    SizedBox(height: 25),
-                    Text('Регистрация'),
-                    SizedBox(height: 50),
-                    phoneNumberField,SizedBox(height: 25),
-                    fioField, SizedBox(height: 15),
-                    passwordField,SizedBox(height: 15),
-
-                    passwordEditingField ,SizedBox(height: 21),
-                    Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                       children: <Widget>[
-
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(height: 100),
+            Image.asset(
+              'assets/doc.png',
+              fit: BoxFit.contain,
+              width: 144,
+              height: 58,
+            ),
+            SizedBox(height: 25),
+            Text(
+              'Регистрация',
+              style: TextStyle(
+                  color: Color(0xFF444444),
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18),
+            ),
+            SizedBox(height: 50),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Color(0xFFEDEDEF),
+              ),
+              child: phoneNumberField,
+            ),
+            SizedBox(height: 10),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Color(0xFFEDEDEF),
+              ),
+              child: fioField,
+            ),
+            SizedBox(height: 10),
+            Container(
+              padding: EdgeInsets.only(left: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Color(0xFFEDEDEF),
+              ),
+              child: passwordField,
+            ),
+            SizedBox(height: 10),
+            Container(
+              padding: EdgeInsets.only(left: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Color(0xFFEDEDEF),
+              ),
+              child: passwordEditingField,
+            ),
+            SizedBox(height: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
 //  Row(
 //    crossAxisAlignment: CrossAxisAlignment.start,
 //   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -262,69 +254,107 @@ class _RagistrationScreen1State extends State<RagistrationScreen1> {
 //
 //
 
-
-           Row(
-
-             children: [
-               Radio(
-                 value: 1,
-                 groupValue: 0,
-                 activeColor: Colors.blue,
-                 onChanged: (val){
-                   print('Radio$val');
-
-                 },
-               ),
-               Text(
-                 'Соглашаюсь с условиями пользования'),
-             ],
-           ),
-                         Row(
-
-                           children: [
-                             Radio(
-                               value: 1,
-                               groupValue: 0,
-                               activeColor: Colors.blue,
-                               onChanged: (val){
-                                 print('Radio$val');
-
-                               },
-                             ),
-                             Text(
-                                 'Соглашаюсь с условиями пользования'),
-                           ],
-                         ),
-                         SizedBox(height: 31),
-
-                       ],
+                Row(
+                  children: [
+                    /*Radio(
+                      value: 1,
+                      groupValue: 0,
+                      activeColor: Colors.blue,
+                      onChanged: (val) {
+                        print('Radio$val');
+                      },
+                    ),*/
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          check1 = !check1;
+                        });
+                      },
+                      child: Container(
+                        width: 18,
+                        height: 18,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: check1 ? Color(0xFF3D8BFF) : Color(0xFFE0E0E0),
+                        ),
+                        child: check1
+                            ? Center(
+                            child: Icon(Icons.check,
+                                color: Colors.white, size: 15))
+                            : Center(),
                       ),
-                    signUpButton, SizedBox(height: 80),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text('У вас есть аккаунт? '),
-                        GestureDetector(onTap: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => LoginScreen()));
-                        },
-                          child: Text('Войти', style: TextStyle(
-                              fontWeight:
-                              FontWeight.w600, fontSize: 15,
-                            color: Color(0xffFFB951)
-                          ),
-
-                          ),)
-                      ],
                     ),
-                    SizedBox(height: 55),
+                    SizedBox(width: 10),
+                    Text(
+                      'Соглашаюсь с политикой конфиденциальности',
+                      style: TextStyle(
+                          color: Color(0xFF444444),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12),
+                    ),
                   ],
                 ),
-              ),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          check2 = !check2;
+                        });
+                      },
+                      child: Container(
+                        width: 18,
+                        height: 18,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: check2 ? Color(0xFF3D8BFF) : Color(0xFFE0E0E0),
+                        ),
+                        child: check2
+                            ? Center(
+                            child: Icon(Icons.check,
+                                color: Colors.white, size: 15))
+                            : Center(),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'Соглашаюсь с условиями пользования',
+                      style: TextStyle(
+                          color: Color(0xFF444444),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+              ],
             ),
-          ),
+            signUpButton,
+            SizedBox(height: 80),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('У вас есть аккаунт? '),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
+                  child: Text(
+                    'Войти',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                        color: Color(0xffFFB951)),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 55),
+          ],
         ),
       ),
-    ) ;
+    );
   }
 }

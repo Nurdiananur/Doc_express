@@ -52,7 +52,7 @@ class _Afto1State extends State<Afto1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar:  AppBar(
+      appBar:  AppBar(
 
         title: Padding(
           padding: const EdgeInsets.only(left: 64),
@@ -65,7 +65,7 @@ class _Afto1State extends State<Afto1> {
           height: 22,
           child: Padding(
             padding: const EdgeInsets.only(left: 15),
-            child: Image.asset('assets/doc.jpg'),
+            child: Image.asset('assets/doc.png'),
           ),
         ),
       ),
@@ -83,29 +83,29 @@ class _Afto1State extends State<Afto1> {
                   SizedBox(height: 20,),
                   Text('Вы не авторизованы'),
                   SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Material(
-              elevation: 5,
-              borderRadius: BorderRadius.circular(15),
-              color: Color(0xffFFB951),
-              child: MaterialButton(
-                padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                minWidth: MediaQuery.of(context).size.width,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
-                },
-                child: Text('Войти',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold
-                  ),
-                ),
-              ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Material(
+                      elevation: 5,
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color(0xffFFB951),
+                      child: MaterialButton(
+                        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        minWidth: MediaQuery.of(context).size.width,
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => LoginScreen()));
+                        },
+                        child: Text('Войти',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ),
 
-            ),
-          ),
+                    ),
+                  ),
 
                 ],
               ),

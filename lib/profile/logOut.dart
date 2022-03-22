@@ -1,3 +1,4 @@
+import 'package:doc_express/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -46,26 +47,22 @@ class LogOut1 extends StatefulWidget {
   const LogOut1({Key? key}) : super(key: key);
 
   @override
-  State<LogOut> createState() => _LogOut1State();
+  State<LogOut1> createState() => _LogOut1State();
 }
 
-class _LogOut1State extends State<LogOut> {
+class _LogOut1State extends State<LogOut1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffE5E5E5),
+      backgroundColor: Color(0xffF7F6F6),
       appBar: AppBar(
         backgroundColor: Colors.white,
+        centerTitle: true,
         title: Text('Мой профиль',
           style: TextStyle(
-              fontSize: 20, color: Color(0xff444444), fontWeight: FontWeight.bold
+              fontSize: 16, color: Color(0xff444444), fontWeight: FontWeight.w600
           ),
-
-        ), leading: IconButton(onPressed: (){
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => MyProfile()));
-      }, icon: Icon(FontAwesomeIcons.arrowLeft , color: Color(0xff444444),),
-      ),
+        ),
       ),
 
       body: Center(
@@ -93,10 +90,8 @@ class _LogOut1State extends State<LogOut> {
                   ),
                 ),
               ),
-               SizedBox(height: 10,),
-               Text('''
-Вы действительно 
-  хотите выйти?'''),
+              SizedBox(height: 10,),
+              Text('''Вы действительно хотите выйти?'''),
               SizedBox(height: 15,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -109,8 +104,7 @@ class _LogOut1State extends State<LogOut> {
                       minWidth: 155,
                       height: 50,
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Profile()));
+                        Navigator.pop(context);
                       },
                       child: Text('Назад',
                         textAlign: TextAlign.center,
@@ -121,25 +115,25 @@ class _LogOut1State extends State<LogOut> {
                     ),
 
                   ),
-                Material(
-                borderRadius: BorderRadius.circular(15),
-                color: Color(0xffFFB951),
-                child: MaterialButton(
-                  minWidth: 155,
-                  height: 50,
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Afto()));
-                  },
-                  child: Text('Войти',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold
+                  Material(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Color(0xffFFB951),
+                    child: MaterialButton(
+                      minWidth: 155,
+                      height: 50,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => LoginScreen()));
+                      },
+                      child: Text('Выйти',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold
+                        ),
+                      ),
                     ),
-                  ),
-                ),
 
-                )
+                  )
                 ],
               )
             ],

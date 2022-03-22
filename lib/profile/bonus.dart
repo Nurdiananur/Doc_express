@@ -39,9 +39,6 @@ class _BonusState extends State<Bonus> {
     );
   }
 }
-
-
-
 class Bonus1 extends StatefulWidget {
   const Bonus1({Key? key}) : super(key: key);
 
@@ -55,7 +52,7 @@ class _Bonus1State extends State<Bonus1> {
     final divider = Divider(color: Colors.black12,
       indent: 5,
       endIndent: 5,
-      height: 40,
+      height: 30,
       thickness: 1,
     );
 
@@ -84,129 +81,90 @@ class _Bonus1State extends State<Bonus1> {
         backgroundColor: Colors.white,
         title: Text('Бонусная карта',
           style: TextStyle(
-              fontSize: 20, color: Color(0xff444444), fontWeight: FontWeight.bold
+              fontSize: 16, color: Color(0xff444444), fontWeight: FontWeight.w600
           ),
-
-        ), leading: IconButton(onPressed: (){
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => Profile()));
-      }, icon: Icon(FontAwesomeIcons.arrowLeft , color: Color(0xff444444),),
-      ),
+        ),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Color(0xFF444444)),
       ),
 
       body: SingleChildScrollView(
-        child: Container(
-          color: Color(0xffE5E5E5),
-          child: Column(
-            children: [
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
-                  child: Column(
+        padding: const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 20),
+        child: Column(
+          children: [
+            Text('''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor, amet in interdum leo. Tortor dui sit viverra fames turpis semper est, tortor. Habitant interdum tortor, et lectus sollicitudin sit lectus nunc.Vel ornare netus donec at id quam nulla.'''),
+
+            SizedBox(height: 20),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: 30,vertical: 18),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Color(0xffFFB951),
+                  image: DecorationImage(
+                      image: AssetImage('assets/contCircle.png')
+                  )
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('Накопленные бонусы'),
+                  Text('25 781 сом', style: TextStyle(fontSize: 40)),
+                ],
+              ),
+            ),
+            SizedBox(height: 40),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text('''Lorem ipsum dolor sit amet, consectetur adipiscing 
-elit. Dolor, amet in interdum leo. Tortor dui sit viverra 
-fames turpis semper est, tortor. Habitant interdum
-tortor, et lectus sollicitudin sit lectus nunc.
-Vel ornare netus donec at id quam nulla.'''),
-
-                    SizedBox(height: 20,),
-                      Container(
-                        width: 345,
-                        height: 110,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Color(0xffFFB951)
-                        ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 30, top: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                'Накопленные бонусы'),
-                                    Text('25 781 сом', style: TextStyle(fontSize: 40),),
-
-                                  ],
-                                ),
-
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.blue
-                                  ),
-                                )
-                              ],
-                            ),
-                ),
-                        ),
+                      Text('Номер груза',style: TextStyle(fontSize: 18)),
+                      Text(' Дата',style: TextStyle(fontSize: 18)),
+                      SizedBox(width: 70),
                     ],
                   ),
-                ),
-              ),
-              SizedBox(height: 40,),
-              Container(
-                width: 370,
-                height: 623,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20, left: 0),
-                      child: Row(
 
-                        children: [
-                          Text('Номер груза',style: TextStyle(
-                            fontSize: 18
-
-                          ),),
-                          Text('Дата',style: TextStyle(
-                              fontSize: 18
-                          ),
-                          )
-                        ],
-                      ),
-                    ),
-
-                    divider,
-                    row,
-                    divider,
-                    row,
-                    divider,
-                    row,
-                    divider,
-                    row,
-                    divider,
-                    row,
-                    divider,
-                    row,
-                    divider,
-                    row,
-                    divider,
-                    row,
+                  divider,
+                  row,
+                  divider,
+                  row,
+                  divider,
+                  row,
+                  divider,
+                  row,
+                  divider,
+                  row,
+                  divider,
+                  row,
+                  divider,
+                  row,
+                  divider,
+                  row,
 
 
 
 
 
 
-                  ],
-                ),
-
+                ],
               ),
 
-            ],
-          ),
+            ),
+
+          ],
         ),
       ),
     );
   }
 }
+
+
+

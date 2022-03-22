@@ -53,128 +53,210 @@ class History1 extends StatefulWidget {
 }
 
 class _History1State extends State<History1> {
-
+  bool open = false;
+  int getTruck = 5;
   @override
   Widget build(BuildContext context) {
-    final container = Center(
-        child: Column(
-          children: [
-            SizedBox(height: 20,),
-            Container(
-              width: 345,
-              height: 239,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white
-              ),
-              child: Center(
-                child: Column(
-                    children: [
 
-                      Padding(
-                        padding: const EdgeInsets.only(top:22),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('#HX561871351', style: TextStyle(
-                                fontSize: 16
-                            ),),
-                            Container(
-                              width: 56,
-                              height: 27,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color(0xffFFB951)
-                              ),
-                              child: Center(child: Text('+500', style: TextStyle(fontSize: 16),)),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                    '01.01.2022'
-                                ),
-                                Text('03.01.2022')
-                              ],
-                            ),
-                            SizedBox(height: 5,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween ,
-                              children: [
-                                Text('Кыргызстан, Бишкек'),
-                                Text('Россия, Москва')
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5),
-                        child: Column(
-                          children:<Widget> [
-                            SizedBox(height: 5),
-                            Divider(color: Color(0xffFFB951),
-                              indent: 5,
-                              endIndent: 5,
-                              height: 40,
-                              thickness: 1,
-                            ),
-                            Text('Посылка доставлена', style: TextStyle(fontSize: 16),),
-                            Divider(color: Colors.black26,
-                              indent: 5,
-                              endIndent: 5,
-                              height: 30,
-                              thickness: 1,
-                            ),
-
-                            Icon(FontAwesomeIcons.angleDown ),
-                          ],
-                        ),
-                      )
-                    ]
-                ),
-              ),
-            )
-          ],
-        )
+    final getContainer = Container(
+      width: 20,
+      height: 20,
+      decoration: BoxDecoration(color: Color(0xFFFFB951), shape: BoxShape.circle),
+      child: Center(
+        child: Icon(
+          Icons.check,
+          size: 10,
+          color: Colors.black,
+        ),
+      ),
     );
+    final notGetContainer = Container(
+      width: 8,
+      height: 8,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Color(0xFFFFB951),
+      ),
+    );
+    final container = Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          border: Border.all(color: Colors.black38, width: 1)),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 22, bottom: 22, left: 10, right: 10),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('#HX561871351'),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      color: Color(0xffFFB951),
+                    ),
+                    child: Text('+500'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('01.01.2022'),
+                    Text('03.01.2022'),
+                  ],
+                ),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('Кыргызстан, Бишкек'),
+                    Text('Россия, Москва'),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Stack(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        getTruck == 1 ? getContainer : notGetContainer,
+                        getTruck == 2 ? getContainer : notGetContainer,
+                        getTruck == 3 ? getContainer : notGetContainer,
+                        getTruck == 4 ? getContainer : notGetContainer,
+                        getTruck == 5 ? getContainer : notGetContainer,
+                      ],
+                    ),
+                    Divider(
+                      color: Color(0xffFFB951),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'Посылка доставлена',
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Color(0xFF444444),
+                      fontWeight: FontWeight.w600),
+                ),
+                Divider(
+                  color: Color(0xFFDADADA),
+                  indent: 5,
+                  endIndent: 5,
+                  height: 30,
+                  thickness: 1,
+                ),
+                if (!open)
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        open = !open;
+                      });
+                    },
+                    icon: Icon(FontAwesomeIcons.angleDown),
+                  ),
+                if (open)
+                  Column(
+                    children: [
+                      openTrue('parameterTruck', 'Праметры груза','Коробка XS 17х12х9, до 0.5 кг'),
 
-
-
+                      openTrue('truckPng', 'Тип доставки','Авиа доставка'),
+                      openTrue('refresh', 'Упаковка','Коробка'),
+                      openTrue('date', 'Дата сдачи посылки','01.01.2022, 14:22'),
+                      openTrue('date', 'Дата доставки посылки','03.01.2022, 12:00'),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            open = !open;
+                          });
+                        },
+                        icon: Icon(FontAwesomeIcons.angleUp),
+                      ),
+                    ],
+                  )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
     return Scaffold(
       backgroundColor: Color(0xffE5E5E5),
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text('История',
           style: TextStyle(
-              fontSize: 20, color: Color(0xff444444), fontWeight: FontWeight.bold
+              fontSize: 16, color: Color(0xff444444), fontWeight: FontWeight.w600
           ),
-
-        ), leading: IconButton(onPressed: (){
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => MyProfile()));
-      }, icon: Icon(FontAwesomeIcons.arrowLeft , color: Color(0xff444444),),
-      ),
+        ),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Color(0xFF444444)),
       ),
 
       body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
         child: Column(
           children: [
             container,
+            SizedBox(height: 20),
             container,
+            SizedBox(height: 20),
             container,
+            SizedBox(height: 20),
             container,
-            SizedBox(height: 20,)
+            SizedBox(height: 20)
           ],
         ),
       ),
+    );
+  }
+  Widget openTrue(String icon,text1,text2){
+    return Column(
+      children: [
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 21.0),
+              child: Image.asset(
+                'assets/${icon}Icon.png',
+                width: 18,
+                height: 18,
+              ),
+            ),
+            SizedBox(width: 26),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  text1,
+                  style:
+                  TextStyle(color: Color(0xFF444444), fontSize: 12),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  text2,
+                  style:
+                  TextStyle(color: Color(0xFF444444), fontSize: 14),
+                ),
+              ],
+            )
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Divider(color: Color(0xFFEEEEEE)),
+        )
+      ],
     );
   }
 }

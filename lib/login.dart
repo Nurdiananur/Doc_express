@@ -16,56 +16,49 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController phoneController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
   bool passwordObscured = true;
+
   @override
   Widget build(BuildContext context) {
     final phoneField = TextFormField(
-      autofocus: false,
-      controller: phoneController,
-      keyboardType: TextInputType.emailAddress,
-      onSaved: (value)
-      {
-        phoneController.text = value!;
-      },
-      textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        autofocus: false,
+        controller: phoneController,
+        keyboardType: TextInputType.phone,
+        onSaved: (value) {
+          phoneController.text = value!;
+        },
+        textInputAction: TextInputAction.next,
+
+        decoration: InputDecoration(
+
+          border: InputBorder.none,
+          // contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: 'Номер телефона',
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          filled: true,
-          fillColor: Color(0xffEDEDEF)
-      ),
+        )
     );
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordController,
       obscureText: passwordObscured,
-      onSaved: (value)
-      {
+      onSaved: (value) {
         phoneController.text = value!;
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
+        border: InputBorder.none,
 
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        // contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: 'Пароль',
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        filled: true,
-        fillColor: Color(0xffEDEDEF),
+
+        // filled: true,
+        // fillColor: Color(0xffEDEDEF),
         suffixIcon: IconButton(
             onPressed: () {
-              setState((){
+              setState(() {
                 passwordObscured = !passwordObscured;
               });
             },
             icon: Icon(
-              passwordObscured ? Icons.visibility_off
-                  : Icons.vignette,
+              passwordObscured ? Icons.visibility_off : Icons.vignette,
             )),
       ),
     );
@@ -78,88 +71,115 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => MainScreen()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MainScreen()));
         },
-        child: Text('Войти',
+        child: Text(
+          'Войти',
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold
-          ),
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
-
     );
     return Scaffold(
       backgroundColor: Colors.white,
-      body:
-      SingleChildScrollView(
-        child: Center(
-          child: Container(
-            color: Colors.white,
-            child: Form(
-              key: _formKey,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: 100),
-                    SizedBox(height: 100,
-                      child: Container(
-                        width: 144,
-                        height: 58,
-                        child: Image.asset('assets/doc.jpg',
-                          fit: BoxFit.contain,),
-                      ),),
-                    SizedBox(height: 50),
-                    Text('Выход', style: TextStyle(fontSize: 18), ),
-                    SizedBox(height: 50,),
-                    phoneField,SizedBox(height: 10),
-                    passwordField, SizedBox(height: 15),
-                    GestureDetector(onTap: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PasswordState()
-                          ));
+      body: SingleChildScrollView(
+        // physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(),
+              Column(
+                children: [
+                  Image.asset(
+                    'assets/doc.png',
+                    fit: BoxFit.contain,
+                    width: 144,
+                    height: 58,
+                  ),
+                  SizedBox(height: 50),
+                  Text(
+                    'Вход',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color(0xFFEDEDEF),
+                    ),
+                    child: phoneField,
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    padding: EdgeInsets.only(left: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color(0xFFEDEDEF),
+                    ),
+                    child: passwordField,
+                  ),
+                  SizedBox(height: 15),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PasswordState()));
                     },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 100),
-                        child: Text('Забыли пароль?', style: TextStyle(
-
-                            fontWeight:
-                            FontWeight.w600,
-                            fontSize: 15,
-                            color: Color(0xff444444)
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Забыли пароль?',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                              color: Color(0xff444444)),
                         ),
-
-                        ),
-                      ),),
-
-                    SizedBox(height: 15),
-                    loginButton,SizedBox(height: 80),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text('У вас нету аккаунта? ', style: TextStyle(color: Color(0xff444444)),),
-                        GestureDetector(onTap: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => RegistrationScreen()));
-                        },
-                          child: Text('Зарегистрироваться', style: TextStyle(
-                              fontWeight:
-                              FontWeight.w600, fontSize: 15,
-                              color: Color(0xffFFB951)
-                          ),
-
-                          ),)
                       ],
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  loginButton,
+                ],
               ),
-            ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'У вас нету аккаунта? ',
+                    style: TextStyle(color: Color(0xff444444)),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  RegistrationScreen()));
+                    },
+                    child: Text(
+                      'Зарегистрироваться',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15,
+                          color: Color(0xffFFB951)),
+                    ),
+                  ),
+                ],
+              ),
+
+            ],
           ),
         ),
       ),

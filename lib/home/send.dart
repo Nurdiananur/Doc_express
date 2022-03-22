@@ -1,4 +1,5 @@
 import 'package:doc_express/screens/main_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -44,94 +45,26 @@ class Send1 extends StatefulWidget {
 
 class _Send1State extends State<Send1> {
 
-  bool value = false;
   late int selectedRadio;
+
   @override
   void initState() {
     super.initState();
     selectedRadio = 0;
   }
 
-  setSelectedRadio(int val){
+  setSelectedRadio(int val) {
     setState(() {
       selectedRadio = val;
     });
   }
 
-  final boxChek = Container(
-    width: 345,
-    height: 80,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15),
-      color: Color(0xffEDEDEF),
-    ),
+  bool check1 = false;
+  bool check2 = false;
 
-    child: Padding(
-      padding: const  EdgeInsets.all(20),
-      child: Row(
-        children: [
 
-          Text(
-''' Сейф пакет стандарт
-438 * 575 * 50'''
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 70),
-            child: ButtonBar(
-              children: <Widget>[
-                Radio(
-                  value: 1,
-                  groupValue: 0,
-                  activeColor: Colors.blue,
-                  onChanged: (val){
-                    print('Radio$val');
 
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
 
-  final boxCheked = Container(
-    width: 345,
-    height: 80,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15),
-      color: Color(0xffEDEDEF),
-    ),
-
-    child: Padding(
-      padding: const  EdgeInsets.all(20),
-      child: Row(
-        children: [
-
-          Text(
-              ''' Пакет СД'''
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 140),
-            child: ButtonBar(
-              children: <Widget>[
-                Radio(
-                  value: 1,
-                  groupValue: 0,
-                  activeColor: Colors.blue,
-                  onChanged: (val){
-                    print('Radio$val');
-
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,42 +85,240 @@ class _Send1State extends State<Send1> {
       ),
     body: SingleChildScrollView(
       child: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
-          child: Column(
-              children: [
-                boxChek,
-                SizedBox(height: 15,),
-                boxChek,
-                SizedBox(height: 15,),
-                boxChek,
-                SizedBox(height: 15,),
-                boxChek,
-                SizedBox(height: 15,),
-                boxChek,
-                SizedBox(height: 15,),
-                boxChek,
-                SizedBox(height: 15,),
-                boxCheked,
-                SizedBox(height: 15,),
-                boxCheked,
-                SizedBox(height: 15,),
-                boxChek,
-                SizedBox(height: 15,),
-                boxChek,
-                SizedBox(height: 15,),
-                boxChek,
-                SizedBox(height: 15,),
-                boxCheked,
-                SizedBox(height: 15,),
-                boxCheked,
-                SizedBox(height: 15,),
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 15,),
+              Container(
+                width: 345,
+                height: 80,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Color(0xffEDEDEF),
+                ),
 
-              ],
-            ),
-        ),
-      ),
-    ),
+                child: Padding(
+                    padding: const  EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+
+                        Text(
+                            ''' Сейф пакет стандарт
+438 * 575 * 50'''
+                        ),
+                        SizedBox(width: 15,),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              check1 = !check1;
+                            });
+                          },
+                          child: Container(
+                            width: 18,
+                            height: 18,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: check1 ? Colors.blue : Colors.white,
+                            ),
+                            child: check1
+                                ? Center(
+                                child: Icon(Icons.check,
+                                    color: Colors.white, size: 15))
+                                : Center(),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                ),
+              ),
+                        SizedBox(height: 15,),
+                        Container(
+                          width: 345,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Color(0xffEDEDEF),
+                          ),
+
+                          child: Padding(
+                            padding: const  EdgeInsets.all(20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+
+                                Text(
+                                    ''' Сейф пакет стандарт
+438 * 575 * 50'''
+                                ),
+                                SizedBox(width: 15,),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      check1 = !check1;
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 18,
+                                    height: 18,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: check1 ? Colors.blue : Colors.white,
+                                    ),
+                                    child: check1
+                                        ? Center(
+                                        child: Icon(Icons.check,
+                                            color: Colors.white, size: 15))
+                                        : Center(),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 15,),
+                        Container(
+                          width: 345,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Color(0xffEDEDEF),
+                          ),
+
+                          child: Padding(
+                            padding: const  EdgeInsets.all(20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+
+                                Text(
+                                    ''' Сейф пакет стандарт
+162 * 245 * 30K (A5)'''
+                                ),
+                                SizedBox(width: 15,),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      check1 = !check1;
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 18,
+                                    height: 18,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: check1 ? Colors.blue : Colors.white,
+                                    ),
+                                    child: check1
+                                        ? Center(
+                                        child: Icon(Icons.check,
+                                            color: Colors.white, size: 15))
+                                        : Center(),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 15,),
+                        Container(
+                          width: 345,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Color(0xffEDEDEF),
+                          ),
+
+                          child: Padding(
+                            padding: const  EdgeInsets.all(20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+
+                                Text(
+                                    ''' Сейф пакет стандарт
+243 * 320 * 40K (A4)'''
+                                ),
+                                SizedBox(width: 15,),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      check1 = !check1;
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 18,
+                                    height: 18,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: check1 ? Colors.blue : Colors.white,
+                                    ),
+                                    child: check1
+                                        ? Center(
+                                        child: Icon(Icons.check,
+                                            color: Colors.white, size: 15))
+                                        : Center(),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 15,),
+                        Container(
+                          width: 345,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Color(0xffEDEDEF),
+                          ),
+
+                          child: Padding(
+                            padding: const  EdgeInsets.all(20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+
+                                Text(
+                                    ''' Сейф пакет стандарт
+296 * 400 * 45K (A4+)'''
+                                ),
+                                SizedBox(width: 15,),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      check1 = !check1;
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 18,
+                                    height: 18,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: check1 ? Colors.blue : Colors.white,
+                                    ),
+                                    child: check1
+                                        ? Center(
+                                        child: Icon(Icons.check,
+                                            color: Colors.white, size: 15))
+                                        : Center(),
+                                  ),
+                                ),
+
+
+
+    ]
+)
+    )
+    )
+          ]
+                                  )
+    )
+    )
     );
   }
 }

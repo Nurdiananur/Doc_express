@@ -49,35 +49,34 @@ class Calculus3 extends StatefulWidget {
 }
 
 class _Calculus3State extends State<Calculus3> {
-  bool value = true;
+  bool value = false;
   late int selectedRadio;
+
   @override
   void initState() {
     super.initState();
     selectedRadio = 0;
   }
 
-  setSelectedRadio(int val){
+  setSelectedRadio(int val) {
     setState(() {
       selectedRadio = val;
     });
   }
 
   final boxChek = Container(
-    padding: EdgeInsets.symmetric(horizontal: 10),
-    // width: 345,
-    height: 116,
-
-    color: Color(0xffEDEDEF),
+    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+    decoration: BoxDecoration(
+        color: Color(0xffEDEDEF),
+        borderRadius: BorderRadius.circular(8)
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-
-        Text(
-            '''Коробка
-35х35х5 см, до 2кг
-Маленькие предметы, документы,
-бижутерия, аксессуары'''
+        Container(
+          width: 270,
+          child: Text(
+              '''Коробка 35х35х5 см, до 2кг Маленькие предметы, документы, бижутерия, аксессуары'''),
         ),
         ButtonBar(
           buttonPadding: EdgeInsets.all(0),
@@ -86,9 +85,8 @@ class _Calculus3State extends State<Calculus3> {
               value: 1,
               groupValue: 0,
               activeColor: Colors.blue,
-              onChanged: (val){
+              onChanged: (val) {
                 print('Radio$val');
-
               },
             ),
           ],
@@ -96,77 +94,77 @@ class _Calculus3State extends State<Calculus3> {
       ],
     ),
   );
+
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(' Калькулятор',
-          style: TextStyle(
-              fontSize: 20, color: Color(0xff444444), fontWeight: FontWeight.bold
-          ),
-
-        ), leading: IconButton(onPressed: (){
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => MainScreen())
-        );
-      }, icon: Icon(FontAwesomeIcons.arrowLeft , color: Color(0xff444444),),
+        title: Text(
+          'Отправить посылку',
+          style: new TextStyle(color: Color(0xff444444), fontSize: 16),
+        ),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Color(0xFF444444)),
       ),
-      ),
-
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 20, ),
-
-            child: Column(
-              children: [
-                boxChek,
-                SizedBox(height: 10,),
-                boxChek,
-                SizedBox(height: 10,),
-                boxChek,
-                SizedBox(height: 10,),
-                boxChek,
-                SizedBox(height: 10,),
-                boxChek,
-                SizedBox(height: 10,),
-                boxChek,
-                SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Material(
-                    elevation: 5,
-                    borderRadius: BorderRadius.circular(15),
-                    color: Color(0xffFFB951),
-                    child: MaterialButton(
-                      padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
-                      minWidth: MediaQuery.of(context).size.width,
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Send()));
-                      },
-                      child: Text('Далее',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold
-                        ),
-                      ),
-                    ),
-
+        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+        child: Column(
+          children: [
+            boxChek,
+            SizedBox(
+              height: 10,
+            ),
+            boxChek,
+            SizedBox(
+              height: 10,
+            ),
+            boxChek,
+            SizedBox(
+              height: 10,
+            ),
+            boxChek,
+            SizedBox(
+              height: 10,
+            ),
+            boxChek,
+            SizedBox(
+              height: 10,
+            ),
+            boxChek,
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Material(
+                elevation: 5,
+                borderRadius: BorderRadius.circular(15),
+                color: Color(0xffFFB951),
+                child: MaterialButton(
+                  padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+                  minWidth: MediaQuery.of(context).size.width,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Send()));
+                  },
+                  child: Text(
+                    'Далее',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(height: 20,),
-              ],
+              ),
             ),
-          ),
+            SizedBox(
+              height: 20,
+            ),
+          ],
         ),
       ),
     );
-
   }
-
 }
