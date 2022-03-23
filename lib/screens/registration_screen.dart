@@ -256,14 +256,7 @@ class _RagistrationScreen1State extends State<RagistrationScreen1> {
 
                 Row(
                   children: [
-                    /*Radio(
-                      value: 1,
-                      groupValue: 0,
-                      activeColor: Colors.blue,
-                      onChanged: (val) {
-                        print('Radio$val');
-                      },
-                    ),*/
+
                     GestureDetector(
                       onTap: () {
                         setState(() {
